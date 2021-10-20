@@ -8,4 +8,4 @@ const config = {
     dialect:process.env.DB_DIALECT
 }
 
-module.exports = config
+module.exports = config;

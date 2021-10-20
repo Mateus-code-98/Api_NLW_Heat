@@ -1,13 +1,12 @@
-import { Response, NextFunction } from 'express';
+import { Response, NextFunction,Request } from 'express';
 import { CreateMessageService } from '../services/CreateMessageService';
 
-export class CreateMessageController {
-    handle = async (req: any, res: Response, next: NextFunction) => {
-        const userId = req.user.id
-        const { text } = req.body
+export const CreateMessageController = async (req: Request, res: Response, next: NextFunction) => {
+    const userId = req.userId
+    
+    const { text } = req.body
 
-        const result = await new CreateMessageService().execute(text, userId)
+    const result = await CreateMessageService(text, userId)
 
-        return res.json(result)
-    }
+    return res.json(result)
 }
